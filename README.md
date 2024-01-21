@@ -26,13 +26,11 @@ If Git is not already installed, download and install it from https://git-scm.co
    •Run the following command to install the project dependencies (including Cypress):
 
    npm install
-
    npm install --save-dev @faker-js/faker
 
 10. Open Cypress in Visual Studio Code:
     
     •Once the dependencies are installed, open Cypress using the following command:
-
-   npx cypress open --env deployment-env=dev (to run tests one by one)
-
-   npx cypress open --env deployment-env=dev --config numTestsKeptInMemory=0 (to run all tests together)
+    
+    npx cypress open --env deployment-env=dev (to run tests one by one)
+    npx cypress open --env deployment-env=dev --config numTestsKeptInMemory=0 (to run all tests together)

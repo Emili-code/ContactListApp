@@ -2,7 +2,7 @@
 Steps to run Test Automation for https://thinking-tester-contact-list.herokuapp.com/:
 1. Open Visual Studio Code:
 Launch Visual Studio Code on your machine.
-If not already installed, download and install it fromnhttps://code.visualstudio.com/
+If not already installed, download and install it from https://code.visualstudio.com/
 2. Install Git:
 If Git is not already installed, download and install it from https://git-scm.com/.
 3. Clone the Git Repository:

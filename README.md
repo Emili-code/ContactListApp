@@ -8,8 +8,10 @@ If not already installed, download and install it from https://code.visualstudio
 If Git is not already installed, download and install it from https://git-scm.com/
 
 4. Clone the Git Repository:
-   •Open the terminal in Visual Studio Code (View > Terminal)
-   •Run the following command to clone the Git repository:
+   
+   Open the terminal in Visual Studio Code (View > Terminal)
+
+   Run the following command to clone the Git repository:
 
    git clone <repository_url>
 

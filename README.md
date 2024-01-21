@@ -23,7 +23,8 @@ If Git is not already installed, download and install it from https://git-scm.co
    Replace <project_directory> with the name of the cloned repository
 
 8. Install Dependencies:
-   •Run the following command to install the project dependencies (including Cypress):
+
+   Run the following command to install the project dependencies (including Cypress):
 
    npm install
    
@@ -31,7 +32,7 @@ If Git is not already installed, download and install it from https://git-scm.co
 
 10. Open Cypress in Visual Studio Code:
     
-    •Once the dependencies are installed, open Cypress using the following command:
+    Once the dependencies are installed, open Cypress using the following command:
     
     npx cypress open --env deployment-env=dev (to run tests one by one)
     

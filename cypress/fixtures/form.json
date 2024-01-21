@@ -1,0 +1,11 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "birthDate": "1990-11-27",
+  "email":"", 
+  "phone":"",
+  "adress1":"", 
+  "city":"", 
+  "postalCode":"",
+  "country":""
+}

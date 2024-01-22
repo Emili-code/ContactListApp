@@ -58,27 +58,41 @@ Cypress.Commands.add('submitMandatoryFormData', () => {
   Cypress.env('firstName', firstName);
 });
 
-Cypress.Commands.add('submitForm', () => {
-  const firstName = faker.name.firstName();
-  const lastName = faker.name.lastName();
-  const birthDate = faker.date.past().toLocaleDateString('en-US');
+Cypress.Commands.add('editContact', () => {
+  const firstNameMaxLength = 19;
+  const firstName = faker.random.alpha({ count: firstNameMaxLength });
   const email = faker.internet.email();
-  const phone = faker.phone.phoneNumber();
+  const phone = faker.phone.phoneNumberFormat().replace(/[^0-9]/g, '').slice(0, 15);
   const address1 = faker.address.streetAddress();
-  const city = faker.address.city();
-  const postalCode = faker.address.zipCode();
-  const country = faker.address.country();
-  cy.get('#firstName').type(firstName);
-  cy.get('#lastName').type(lastName);
-  cy.get('#birthdate').type(birthDate);
-  cy.get('#email').type(email);
-  cy.get('#phone').type(phone);
-  cy.get('#street1').type(address1);
-  cy.get('#city').type(city);
-  cy.get('#postalCode').type(postalCode);
-  cy.get('#country').type(country);
-  cy.get("#submit").click();
-});
+  let birthDate;
+  let isValidDate = false;
+  do {
+    birthDate = faker.date.past();
+    const daysInMonth = new Date(birthDate.getFullYear(), birthDate.getMonth() + 1, 0).getDate();
+    isValidDate = birthDate.getDate() <= daysInMonth;
+  } while (!isValidDate || birthDate.getMonth() + 1 > 12);
+
+  const year = birthDate.getFullYear();
+  const month = (birthDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = birthDate.getDate().toString().padStart(2, '0');
+  const formattedBirthDate = `${year}/${month}/${day}`;
+
+  cy.get('#firstName').click().clear({ force: true }).type(firstName).should('have.value', firstName);
+      cy.get('#birthdate').clear().type(formattedBirthDate);
+      cy.get('#email').clear({ force: true }).type(email);
+      cy.get('#phone').clear().type(phone);
+      cy.get('#street1').clear().type(address1);
+      cy.get("#submit").click();
+      return new Cypress.Promise((resolve) => {
+        resolve({
+          firstName,
+          email,
+          phone,
+          address1,
+          formattedBirthDate,
+        });
+    });
+  });
 
 Cypress.Commands.add('logout', () => {
   const activeEnvironment = Cypress.env('deployment-env');

@@ -10,7 +10,7 @@ describe('Verify Adding a New Contact', () => {
         cy.get('.contactTableBodyRow').its('length').then((initialRowCount) => {
             cy.get('#add-contact').click();
             cy.submitMandatoryFormData(faker);
-            cy.get('.contactTableBodyRow').should('have.length', initialRowCount +1 );
+            cy.get('.contactTableBodyRow').should('have.length', initialRowCount + 1);
         });
         cy.logout();
     });

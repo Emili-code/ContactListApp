@@ -2,6 +2,7 @@ import faker from 'faker';
 
 describe('Verify Creating a New User', () => {
     let authToken;
+
     it('Create New User API Test', () => {
         const userData = {
             firstName: faker.name.firstName(),
@@ -13,10 +14,7 @@ describe('Verify Creating a New User', () => {
         cy.request({
             method: 'POST',
             url: 'https://thinking-tester-contact-list.herokuapp.com/users',
-            headers: {
-                Authorization: 'Bearer {{token}}'
-            },
-
+            headers: { Authorization: 'Bearer {{token}}' },
             body: userData
         }).then((response) => {
             expect(response.status).to.equal(201);
@@ -28,6 +26,7 @@ describe('Verify Creating a New User', () => {
             cy.fixture('token.json').then((tokenFixture) => {
                 tokenFixture.authToken = response.body.token;
             });
+            cy.log(`Auth Token: ${response.body.token}`);
         });
     });
 });
